@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block content %}
+<h1>{{ object.title }}</h1>
+<p><strong>Category:</strong> {{ object.category }}</p>
+<p><strong>Ingredients:</strong></p>
+<ul>
+    {% for ingredient in object.ingredients.all %}
+    <li>{{ ingredient }}</li>
+    {% endfor %}
+</ul>
+<p>{{ object.description }}</p>
+<a href="{% url 'edit-recipe' object.id %}" class="btn btn-warning">Edit</a>
+<a href="{% url 'delete-recipe' object.id %}" class="btn btn-danger">Delete</a>
+{% endblock %}
